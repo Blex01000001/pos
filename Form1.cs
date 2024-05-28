@@ -45,25 +45,10 @@ namespace pos
                 flowLayoutPanel5.Controls.Add(flowLayoutPanel);
                 flowLayoutPanel.Size = new System.Drawing.Size(300, 15);
 
-                Label name1 = new Label();
-                name1.Text = checkoutList[i].Split('$')[0];
-                name1.Width = 110;
-                flowLayoutPanel.Controls.Add(name1);
-
-                Label price = new Label();
-                price.Text = checkoutList[i].Split('$')[1];
-                price.Width = 60;
-                flowLayoutPanel.Controls.Add(price);
-
-                Label quantity = new Label();
-                quantity.Text = "1";
-                quantity.Width = 50;
-                flowLayoutPanel.Controls.Add(quantity);
-
-                Label subtotal = new Label();
-                subtotal.Text = checkoutList[i].Split('$')[1];
-                subtotal.Width = 50;
-                flowLayoutPanel.Controls.Add(subtotal);
+                flowLayoutPanel.CreatByString_Width(checkoutList[i].Split('$')[0], 110);
+                flowLayoutPanel.CreatByString_Width(checkoutList[i].Split('$')[1], 60);
+                flowLayoutPanel.CreatByString_Width("1", 50);
+                flowLayoutPanel.CreatByString_Width(checkoutList[i].Split('$')[1], 50);
             }
 
         }

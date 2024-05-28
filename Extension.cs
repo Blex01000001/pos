@@ -67,6 +67,14 @@ namespace pos
             return checkBox.Checked == true ? int.Parse(checkBox.Text.Split('$')[1]) : 0;
         }
 
+        public static void CreatByString_Width(this FlowLayoutPanel flowLayoutPanel, string str, int width)
+        {
+            Label label = new Label();
+            label.Text = str;
+            label.Width = width;
+            flowLayoutPanel.Controls.Add(label);
+        }
+
 
     }
 }
