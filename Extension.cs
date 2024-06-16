@@ -22,26 +22,47 @@ namespace pos
             return count;
         }
 
-        public static void createCheckboxByString(this FlowLayoutPanel flowLayoutPanel, string[] stringList)
+        public static event EventHandler<EventArgs> updatePanelList;
+        public static void updatePanel(this FlowLayoutPanel flowLayoutPanel, EventArgs message)
+        {
+            updatePanelList.Invoke(null, message);
+        }
+        public static void createItemByString(this FlowLayoutPanel flowLayoutPanel, string[] stringList, EventHandler checkedChange, EventHandler valueChage)
         {
             for (int i = 0; i < stringList.Length; i++)
             {
-                Label label33 = new Label();
+                FlowLayoutPanel Panel = new FlowLayoutPanel();
+                Panel.Size = new System.Drawing.Size(160, 25);
+
                 CheckBox checkBox = new CheckBox();
                 checkBox.Text = stringList[i];
-                checkBox.Width = 200;
-                flowLayoutPanel.Controls.Add(checkBox);
+                checkBox.Width = 100;
+                checkBox.CheckedChanged += checkedChange;
+                //checkBox.CheckedChanged += Panelupdate;
+                Panel.Controls.Add(checkBox);
+                flowLayoutPanel.Controls.Add(Panel);
+                NumericUpDown numericUpDown = new NumericUpDown();
+                numericUpDown.Width = 40;
+                numericUpDown.ValueChanged += valueChage;
+                //numericUpDown.ValueChanged += Panelupdate;
+                checkBox.Tag = numericUpDown;
+                numericUpDown.Tag = checkBox;
+
+                Panel.Controls.Add(numericUpDown);
             }
+
         }
         public static int totalByCheckbox(this FlowLayoutPanel flowLayoutPanel)
         {
             int _total = 0;
             foreach (var item in flowLayoutPanel.Controls)
             {
-                if (item is CheckBox)
+                FlowLayoutPanel Panel = item as FlowLayoutPanel;
+                if (Panel.Controls[0] is CheckBox)
                 {
-                    CheckBox checkBox = (CheckBox)item;
-                    _total += checkBox.intParse();
+                    NumericUpDown numeric = (NumericUpDown)Panel.Controls[1];
+                    CheckBox checkBox = (CheckBox)Panel.Controls[0];
+                    _total += checkBox.intParse() * ((int)numeric.Value);
                 }
             }
             return _total;
@@ -52,16 +73,35 @@ namespace pos
             List<string> checkedList = new List<string>();
             foreach (var item in flowLayoutPanel.Controls)
             {
-                if (item is CheckBox)
+                FlowLayoutPanel Panel = item as FlowLayoutPanel;
+                if (Panel.Controls[0] is CheckBox)
                 {
-                    CheckBox checkBox = (CheckBox)item;
+                    CheckBox checkBox = (CheckBox)Panel.Controls[0];
                     if (checkBox.Checked)
                         checkedList.Add(checkBox.Text);
                 }
             }
             return checkedList;
         }
-
+        public static List<Item> checkItem(this FlowLayoutPanel flowLayoutPanel)
+        {
+            List<Item> itemList = new List<Item>();
+            foreach (var item in flowLayoutPanel.Controls)
+            {
+                FlowLayoutPanel Panel = (item as FlowLayoutPanel);
+                if (Panel.Controls[0] is CheckBox)
+                {
+                    NumericUpDown numericUpDown = (NumericUpDown)Panel.Controls[1];
+                    CheckBox checkBox = (CheckBox)Panel.Controls[0];
+                    if (checkBox.Checked && numericUpDown.Value > 0)
+                    {
+                        Item _item = new Item(checkBox.Text, (int)numericUpDown.Value);
+                        itemList.Add(_item);
+                    }
+                }
+            }
+            return itemList;
+        }
         public static int intParse(this CheckBox checkBox)
         {
             return checkBox.Checked == true ? int.Parse(checkBox.Text.Split('$')[1]) : 0;
