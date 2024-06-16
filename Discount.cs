@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pos.Discounts;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -24,7 +25,10 @@ namespace pos
             //全場消費滿1000打8折
             list.RemoveAll(x => x.Name.Contains("free"));
             list.RemoveAll(x => x.Name.Contains("折扣"));
-            DiscountFactory.CreateDiscount(list, option).Discount();
+            Type type = Type.GetType(option);
+            ADiscount discount = (ADiscount)Activator.CreateInstance(type, list);
+            discount.Discount();
+            //DiscountFactory.CreateDiscount(list, option).Discount();
 
             ShowPanel.ShowDetailPanel(list);
         }

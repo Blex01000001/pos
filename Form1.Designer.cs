@@ -195,17 +195,6 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "招牌拉麵買三送一",
-            "招牌拉麵搭可樂送水果一盤",
-            "叉燒拉麵加豆腐$200",
-            "叉燒拉麵買兩個75折",
-            "味噌拉麵買兩個折30",
-            "醬油拉麵買兩個$300",
-            "鹽味拉麵搭可樂打75折",
-            "味噌拉麵送溏心蛋",
-            "全場消費滿500折50",
-            "全場消費滿1000打8折"});
             this.comboBox1.Location = new System.Drawing.Point(453, 529);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(131, 20);

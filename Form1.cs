@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pos.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +33,24 @@ namespace pos
             flowLayoutPanel3.createItemByString(dish, CheckedChage, ValueChage);
             flowLayoutPanel4.createItemByString(others, CheckedChage, ValueChage);
             EventHandlers.ReceivedFlowLayoutPanel += Panelupdate;
+
+            List<KeyValueModel> discounts = new List<KeyValueModel>()
+            {
+                new KeyValueModel("招牌拉麵買三送一","pos.Discounts.Ramen_buy_3_get_1_free"),
+                new KeyValueModel("招牌拉麵搭可樂送水果一盤", "pos.Discounts.mainramen_cola_get_free_fruit"),
+                new KeyValueModel("叉燒拉麵加豆腐$200", "pos.Discounts.porkramen_tofu_200"),
+                new KeyValueModel("叉燒拉麵買兩個75折", "pos.Discounts.porkramen_buy2_get_75discount"),
+                new KeyValueModel("味噌拉麵買兩個折30", "pos.Discounts.misoramen_buy2_discount30"),
+                new KeyValueModel("醬油拉麵買兩個$300", "pos.Discounts.soysauceramen_buy2_300"),
+                new KeyValueModel("鹽味拉麵搭可樂打75折", "pos.Discounts.saltramen_cola_get_75discount"),
+                new KeyValueModel("味噌拉麵送溏心蛋", "pos.Discounts.misoramen_grt_egg_free"),
+                new KeyValueModel("全場消費滿500折50", "pos.Discounts._500_get_50_free"),
+                new KeyValueModel("全場消費滿1000打8折", "pos.Discounts._1000_get_80discount")
+            };
+
+            comboBox1.DataSource = discounts;
+            comboBox1.DisplayMember = "Key";
+            comboBox1.ValueMember = "Value";
         }
 
 
@@ -41,7 +60,7 @@ namespace pos
             NumericUpDown numericUpDown = (NumericUpDown)checkBox.Parent.Controls[1];
             numericUpDown.Value = checkBox.Checked ? 1 : 0;
             Item item = new Item(checkBox.Text, numericUpDown.Value);
-            Order.AddOrder(item, comboBox1.Text);
+            Order.AddOrder(item, comboBox1.SelectedValue.ToString());
         }
 
         private void Panelupdate(object sender, FlowLayoutPanel e)
@@ -56,7 +75,7 @@ namespace pos
             CheckBox checkBox = (CheckBox)numericUpDown.Parent.Controls[0];
             checkBox.Checked = numericUpDown.Value == 0 ? false : true;
             Item item = new Item(checkBox.Text, (int)numericUpDown.Value);
-            Order.AddOrder(item, comboBox1.Text);
+            Order.AddOrder(item, comboBox1.SelectedValue.ToString());
         }
 
 
