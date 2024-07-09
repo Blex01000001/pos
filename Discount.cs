@@ -6,12 +6,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using static pos.Models.MenuModel;
 
 namespace pos
 {
     internal class Discount
     {
-        public static void DiscountFoodList(List<Item> list, string option)
+        public static void DiscountFoodList(List<Item> list, Object discountStrategy)
         {
             //招牌拉麵買三送一
             //招牌拉麵搭可樂送水果一盤
@@ -25,10 +26,9 @@ namespace pos
             //全場消費滿1000打8折
             list.RemoveAll(x => x.Name.Contains("free"));
             list.RemoveAll(x => x.Name.Contains("折扣"));
-            Type type = Type.GetType(option);
-            ADiscount discount = (ADiscount)Activator.CreateInstance(type, list);
-            discount.Discount();
-            //DiscountFactory.CreateDiscount(list, option).Discount();
+            list.RemoveAll(x => x.Name.Contains("套餐"));
+            DiscountContext discountContext = new DiscountContext(list, (DiscountStrategy)discountStrategy);
+            discountContext.ContextInterface(list);
 
             ShowPanel.ShowDetailPanel(list);
         }

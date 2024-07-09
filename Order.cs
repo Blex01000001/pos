@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static pos.Models.MenuModel;
 
 namespace pos
 {
     public static class Order
     {
         public static List<Item> checkoutList = new List<Item>();
-        public static void AddOrder(Item item, string option)
+        public static void AddOrder(Item item, Object discountStrategy)
         {
             //ShowList(checkoutList);
             Item food = checkoutList.FirstOrDefault(x => x.Name == item.Name);
@@ -32,7 +33,12 @@ namespace pos
                 food.Qt = item.Qt;  //修改
                 food.Subtotal = food.Qt * food.Price;
             }
-            Discount.DiscountFoodList(checkoutList, option);
+
+            Discount.DiscountFoodList(checkoutList, discountStrategy);
+            //DiscountContext discountContext = new DiscountContext(checkoutList, option);
+            //discountContext.ContextInterface(checkoutList);
+
+            //Discount.DiscountFoodList(checkoutList, option);
         }
 
 

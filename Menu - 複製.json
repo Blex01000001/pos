@@ -1,0 +1,298 @@
+{
+  "Menus": [
+    {
+      "Type": "food",
+      "Foods": [
+        {
+          "Name": "招牌拉麵",
+          "Price": 200
+        },
+        {
+          "Name": "叉燒拉麵",
+          "Price": 170
+        },
+        {
+          "Name": "味噌拉麵",
+          "Price": 150
+        },
+        {
+          "Name": "醬油拉麵",
+          "Price": 165
+        },
+        {
+          "Name": "鹽味拉麵",
+          "Price": 155
+        }
+      ]
+    },
+    {
+      "Type": "dish",
+      "Foods": [
+        {
+          "Name": "炸雞",
+          "Price": 150
+        },
+        {
+          "Name": "小黃瓜",
+          "Price": 90
+        },
+        {
+          "Name": "豆腐",
+          "Price": 60
+        },
+        {
+          "Name": "豆芽菜",
+          "Price": 60
+        },
+        {
+          "Name": "炸豆腐",
+          "Price": 70
+        },
+        {
+          "Name": "溏心蛋",
+          "Price": 50
+        },
+        {
+          "Name": "炸物",
+          "Price": 220
+        }
+      ]
+    },
+    {
+      "Type": "drinks",
+      "Foods": [
+        {
+          "Name": "可樂",
+          "Price": 100
+        },
+        {
+          "Name": "雪碧",
+          "Price": 100
+        },
+        {
+          "Name": "紅茶",
+          "Price": 80
+        },
+        {
+          "Name": "綠茶",
+          "Price": 80
+        },
+        {
+          "Name": "爽健美茶",
+          "Price": 70
+        },
+        {
+          "Name": "氣泡水",
+          "Price": 300
+        }
+      ]
+    },
+    {
+      "Type": "others",
+      "Foods": [
+        {
+          "Name": "布朗尼",
+          "Price": 150
+        },
+        {
+          "Name": "冰淇淋",
+          "Price": 50
+        },
+        {
+          "Name": "草莓蛋糕",
+          "Price": 90
+        },
+        {
+          "Name": "草莓大福",
+          "Price": 70
+        },
+        {
+          "Name": "水果",
+          "Price": 100
+        }
+      ]
+    }
+  ],
+  "Discount": [
+    {
+      "DiscountName": "招牌拉麵買三送一",
+      "StrategyType": "pos.Strategies.buy_A_get_B_free",
+      "InputCondition": {
+        "itemA": "招牌拉麵",
+        "itemA_qt": 3,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "招牌拉麵",
+        "qt": 1,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "招牌拉麵搭可樂送水果一盤",
+      "StrategyType": "pos.Strategies.buy_A_B_get_C_free",
+      "InputCondition": {
+        "itemA": "招牌拉麵",
+        "itemA_qt": 1,
+        "itemB": "可樂",
+        "itemB_qt": 1,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "水果",
+        "qt": 1,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "叉燒拉麵加豆腐$200",
+      "StrategyType": "pos.Strategies.buy_A_B_get_discountPrice",
+      "InputCondition": {
+        "itemA": "叉燒拉麵",
+        "itemA_qt": 1,
+        "itemB": "豆腐",
+        "itemB_qt": 1,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 0,
+        "discountPrice": 200,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "叉燒拉麵買兩個75折",
+      "StrategyType": "pos.Strategies.buy_A_get_discountRate",
+      "InputCondition": {
+        "itemA": "叉燒拉麵",
+        "itemA_qt": 2,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0.75
+      }
+    },
+    {
+      "DiscountName": "味噌拉麵買兩個折30",
+      "StrategyType": "pos.Strategies.buy_A_get_minusPrice",
+      "InputCondition": {
+        "itemA": "味噌拉麵",
+        "itemA_qt": 2,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 30,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "醬油拉麵買兩個$300",
+      "StrategyType": "pos.Strategies.buy_A_get_discountPrice",
+      "InputCondition": {
+        "itemA": "醬油拉麵",
+        "itemA_qt": 2,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 0,
+        "discountPrice": 300,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "鹽味拉麵搭可樂打75折",
+      "StrategyType": "pos.Strategies.buy_A_B_get_discountRate",
+      "InputCondition": {
+        "itemA": "鹽味拉麵",
+        "itemA_qt": 1,
+        "itemB": "可樂",
+        "itemB_qt": 1,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0.75
+      }
+    },
+    {
+      "DiscountName": "味噌拉麵送溏心蛋",
+      "StrategyType": "pos.Strategies.buy_A_get_B_free",
+      "InputCondition": {
+        "itemA": "味噌拉麵",
+        "itemA_qt": 1,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "溏心蛋",
+        "qt": 1,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "全場消費滿500折50",
+      "StrategyType": "pos.Strategies.total_get_discountPrice",
+      "InputCondition": {
+        "itemA": "",
+        "itemA_qt": 0,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 500
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 50,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "全場消費滿1000打8折",
+      "StrategyType": "pos.Strategies.total_get_discountRate",
+      "InputCondition": {
+        "itemA": "",
+        "itemA_qt": 0,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 1000
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0.8
+      }
+    }
+  ]
+}

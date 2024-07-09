@@ -1,0 +1,268 @@
+{
+  "Menus": [
+    {
+      "Type": "food",
+      "Foods": [
+        {
+          "Name": "壽司拼盤",
+          "Price": 350
+        },
+        {
+          "Name": "刺身拼盤",
+          "Price": 400
+        },
+        {
+          "Name": "鰻魚飯",
+          "Price": 320
+        },
+        {
+          "Name": "天婦羅定食",
+          "Price": 280
+        },
+        {
+          "Name": "豬排飯",
+          "Price": 250
+        }
+      ]
+    },
+    {
+      "Type": "dish",
+      "Foods": [
+        {
+          "Name": "炸蝦",
+          "Price": 150
+        },
+        {
+          "Name": "章魚燒",
+          "Price": 120
+        },
+        {
+          "Name": "日式煎餃",
+          "Price": 100
+        },
+        {
+          "Name": "涼拌海帶",
+          "Price": 80
+        },
+        {
+          "Name": "日式玉子燒",
+          "Price": 70
+        }
+      ]
+    },
+    {
+      "Type": "drinks",
+      "Foods": [
+        {
+          "Name": "清酒",
+          "Price": 180
+        },
+        {
+          "Name": "抹茶拿鐵",
+          "Price": 120
+        },
+        {
+          "Name": "烏龍茶",
+          "Price": 100
+        },
+        {
+          "Name": "冰咖啡",
+          "Price": 90
+        },
+        {
+          "Name": "檸檬水",
+          "Price": 60
+        }
+      ]
+    },
+    {
+      "Type": "others",
+      "Foods": [
+        {
+          "Name": "抹茶冰淇淋",
+          "Price": 100
+        },
+        {
+          "Name": "紅豆麻糬",
+          "Price": 80
+        },
+        {
+          "Name": "芒果慕斯",
+          "Price": 90
+        },
+        {
+          "Name": "日式糰子",
+          "Price": 70
+        },
+        {
+          "Name": "水果拼盤",
+          "Price": 120
+        }
+      ]
+    }
+  ],
+  "Discount": [
+    {
+      "DiscountName": "壽司拼盤買三送一",
+      "StrategyType": "pos.Strategies.buy_A_get_B_free",
+      "InputCondition": {
+        "itemA": "壽司拼盤",
+        "itemA_qt": 3,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "壽司拼盤",
+        "qt": 1,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "刺身拼盤搭清酒送水果拼盤",
+      "StrategyType": "pos.Strategies.buy_A_B_get_C_free",
+      "InputCondition": {
+        "itemA": "刺身拼盤",
+        "itemA_qt": 1,
+        "itemB": "清酒",
+        "itemB_qt": 1,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "水果拼盤",
+        "qt": 1,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "鰻魚飯加日式煎餃$350",
+      "StrategyType": "pos.Strategies.buy_A_B_get_discountPrice",
+      "InputCondition": {
+        "itemA": "鰻魚飯",
+        "itemA_qt": 1,
+        "itemB": "日式煎餃",
+        "itemB_qt": 1,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 0,
+        "discountPrice": 350,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "豬排飯買兩個75折",
+      "StrategyType": "pos.Strategies.buy_A_get_discountRate",
+      "InputCondition": {
+        "itemA": "豬排飯",
+        "itemA_qt": 2,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0.75
+      }
+    },
+    {
+      "DiscountName": "天婦羅定食買兩個折50",
+      "StrategyType": "pos.Strategies.buy_A_get_minusPrice",
+      "InputCondition": {
+        "itemA": "天婦羅定食",
+        "itemA_qt": 2,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 50,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "日式玉子燒搭抹茶拿鐵打85折",
+      "StrategyType": "pos.Strategies.buy_A_B_get_discountRate",
+      "InputCondition": {
+        "itemA": "日式玉子燒",
+        "itemA_qt": 1,
+        "itemB": "抹茶拿鐵",
+        "itemB_qt": 1,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0.85
+      }
+    },
+    {
+      "DiscountName": "豬排飯送紅豆麻糬",
+      "StrategyType": "pos.Strategies.buy_A_get_B_free",
+      "InputCondition": {
+        "itemA": "豬排飯",
+        "itemA_qt": 1,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 0
+      },
+      "Discount": {
+        "Freeitem": "紅豆麻糬",
+        "qt": 1,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "全場消費滿600折60",
+      "StrategyType": "pos.Strategies.total_get_discountPrice",
+      "InputCondition": {
+        "itemA": "",
+        "itemA_qt": 0,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 600
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 60,
+        "discountPrice": 0,
+        "discountRate": 0
+      }
+    },
+    {
+      "DiscountName": "全場消費滿1200打85折",
+      "StrategyType": "pos.Strategies.total_get_discountRate",
+      "InputCondition": {
+        "itemA": "",
+        "itemA_qt": 0,
+        "itemB": "",
+        "itemB_qt": 0,
+        "price": 1200
+      },
+      "Discount": {
+        "Freeitem": "",
+        "qt": 0,
+        "minusPrice": 0,
+        "discountPrice": 0,
+        "discountRate": 0.85
+      }
+    }
+  ]
+}

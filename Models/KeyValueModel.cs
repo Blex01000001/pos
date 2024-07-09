@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static pos.Models.MenuModel;
 
 namespace pos.Models
 {
-    internal class KeyValueModel
+    public class KeyValueModel
     {
         public String Key { get; set; }
-        public String Value { get; set; }
-        public KeyValueModel(String Key, String Value)
+        public DiscountStrategy Value { get; set; }
+        public KeyValueModel(String Key, DiscountStrategy discountStrategy)
         {
             this.Key = Key;
-            this.Value = Value;
+            this.Value = discountStrategy;
         }
     }
 }

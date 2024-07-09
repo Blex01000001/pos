@@ -19,7 +19,7 @@ namespace pos.Discounts
             Item item8 = _itemlist.FirstOrDefault(x => x.Name == "味噌拉麵" & x.Qt >= 1);
             if (item8 != null)
             {
-                Item discount = new Item("溏心蛋(free)$0", item8.Qt / 2);
+                Item discount = new Item("溏心蛋(free)$0", item8.Qt / 1);
                 _itemlist.Add(discount);
             }
         }

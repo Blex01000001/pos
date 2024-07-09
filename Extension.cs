@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,8 @@ namespace pos
             for (int i = 0; i < stringList.Length; i++)
             {
                 FlowLayoutPanel Panel = new FlowLayoutPanel();
+                //Panel.BorderStyle = BorderStyle.FixedSingle;
+                //Panel.BackColor = Color.Red;
                 Panel.Size = new System.Drawing.Size(160, 25);
 
                 CheckBox checkBox = new CheckBox();
